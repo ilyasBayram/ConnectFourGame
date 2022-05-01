@@ -47,7 +47,7 @@ namespace ConnectFourGame
                 { 
                     
                     CreateButton button = new CreateButton();
-                    button.Size = new Size(58, 58);
+                    button.Size = new Size(59, 59);
                     button.BackColor = Color.Azure;
                     button.Location = new System.Drawing.Point(250+countRow, 100+countColom);
                     button.FlatAppearance.BorderSize = 0;
