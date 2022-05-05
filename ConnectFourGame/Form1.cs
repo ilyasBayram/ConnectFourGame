@@ -19,7 +19,38 @@ namespace ConnectFourGame
         }
 
         string player ="";
-       
+
+        List<string> fromLeftToRightFirst = new List<string>();
+        List<string> fromLeftToRightSecond = new List<string>();
+        List<string> fromLeftToRightThird = new List<string>();
+        List<string> fromLeftToRightForth = new List<string>();
+        List<string> fromLeftToRightFifth = new List<string>();
+        List<string> fromLeftToRightSixth = new List<string>();
+
+        List<string> fromDownToUpFirst = new List<string>();
+        List<string> fromDownToUpSecond = new List<string>();
+        List<string> fromDownToUpThird = new List<string>();
+        List<string> fromDownToUpFourth = new List<string>();
+        List<string> fromDownToUpFifth = new List<string>();
+        List<string> fromDownToUpSixth = new List<string>();
+        List<string> fromDownToUpSeventh = new List<string>();
+
+        List<string> fromLeftToRightDiagonalFirst = new List<string>();
+        List<string> fromLeftToRightDiagonalSecond = new List<string>();
+        List<string> fromLeftToRightDiagonalThird = new List<string>();
+        List<string> fromLeftToRightDiagonalFourth = new List<string>();
+        List<string> fromLeftToRightDiagonalFifth = new List<string>();
+        List<string> fromLeftToRightDiagonalSixth = new List<string>();
+
+        List<string> fromRightToLeftDiagonalFirst = new List<string>();
+        List<string> fromRightToLeftDiagonalSecond = new List<string>();
+        List<string> fromRightToLeftDiagonalThird = new List<string>();
+        List<string> fromRightToLeftDiagonalFourth = new List<string>();
+        List<string> fromRightToLeftDiagonalFifth = new List<string>();
+        List<string> fromRightToLeftDiagonalSixth = new List<string>();
+
+
+
         private void PlayerChoose()
         {
             if (player=="Blue")
@@ -40,14 +71,15 @@ namespace ConnectFourGame
         {
             
             int countRow = 0;
+            int buttonName = 1;
             for (int i = 1; i < 8; i++)
             {
                 int countColom = 0;
+                
                 for (int j = 1; j < 7; j++)
                 { 
-                    
                     CreateButton button = new CreateButton();
-                    button.Size = new Size(59, 59);
+                    button.Size = new Size(60, 60);
                     button.BackColor = Color.Azure;
                     button.Location = new System.Drawing.Point(250+countRow, 100+countColom);
                     button.FlatAppearance.BorderSize = 0;
@@ -55,9 +87,12 @@ namespace ConnectFourGame
                     button.FlatAppearance.BorderColor = Color.Black;
                     button.ForeColor = Color.Black;
                     button.Click += Button_Click;
+                    button.Name = buttonName.ToString();
+                    button.Text = buttonName.ToString();
                     this.Controls.Add(button);
                     button.BringToFront();
                     countColom += 70;
+                    buttonName++;
                 }
                 countRow += 75;
 
@@ -69,9 +104,16 @@ namespace ConnectFourGame
         {
             if (player == "Red")
             {
-                (sender as Button).BackColor = Color.Red;
-                (sender as Button).Enabled = false;
-                player = "Blue";
+                if (bu)
+                {
+
+                }
+                else
+                {
+                    (sender as Button).BackColor = Color.Red;
+                    (sender as Button).Enabled = false;
+                    player = "Blue";
+                } 
             }
             else if (player == "Blue")
             {
@@ -79,6 +121,7 @@ namespace ConnectFourGame
                 (sender as Button).Enabled = false;
                 player = "Red";
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
