@@ -20,36 +20,7 @@ namespace ConnectFourGame
 
         string player ="";
 
-        List<string> fromLeftToRightFirst = new List<string>();
-        List<string> fromLeftToRightSecond = new List<string>();
-        List<string> fromLeftToRightThird = new List<string>();
-        List<string> fromLeftToRightForth = new List<string>();
-        List<string> fromLeftToRightFifth = new List<string>();
-        List<string> fromLeftToRightSixth = new List<string>();
-
-        List<string> fromDownToUpFirst = new List<string>();
-        List<string> fromDownToUpSecond = new List<string>();
-        List<string> fromDownToUpThird = new List<string>();
-        List<string> fromDownToUpFourth = new List<string>();
-        List<string> fromDownToUpFifth = new List<string>();
-        List<string> fromDownToUpSixth = new List<string>();
-        List<string> fromDownToUpSeventh = new List<string>();
-
-        List<string> fromLeftToRightDiagonalFirst = new List<string>();
-        List<string> fromLeftToRightDiagonalSecond = new List<string>();
-        List<string> fromLeftToRightDiagonalThird = new List<string>();
-        List<string> fromLeftToRightDiagonalFourth = new List<string>();
-        List<string> fromLeftToRightDiagonalFifth = new List<string>();
-        List<string> fromLeftToRightDiagonalSixth = new List<string>();
-
-        List<string> fromRightToLeftDiagonalFirst = new List<string>();
-        List<string> fromRightToLeftDiagonalSecond = new List<string>();
-        List<string> fromRightToLeftDiagonalThird = new List<string>();
-        List<string> fromRightToLeftDiagonalFourth = new List<string>();
-        List<string> fromRightToLeftDiagonalFifth = new List<string>();
-        List<string> fromRightToLeftDiagonalSixth = new List<string>();
-
-
+        int[,] arr = new int[6, 7];
 
         private void PlayerChoose()
         {
@@ -67,9 +38,15 @@ namespace ConnectFourGame
             btnRed.Enabled = false;
             lblMessage.Visible = false;
         }
+
+        private void ButtonControl()
+        {
+          
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
+
             int countRow = 0;
             int buttonName = 1;
             for (int i = 1; i < 8; i++)
@@ -77,7 +54,7 @@ namespace ConnectFourGame
                 int countColom = 0;
                 
                 for (int j = 1; j < 7; j++)
-                { 
+                {
                     CreateButton button = new CreateButton();
                     button.Size = new Size(60, 60);
                     button.BackColor = Color.Azure;
@@ -87,12 +64,12 @@ namespace ConnectFourGame
                     button.FlatAppearance.BorderColor = Color.Black;
                     button.ForeColor = Color.Black;
                     button.Click += Button_Click;
-                    button.Name = buttonName.ToString();
-                    button.Text = buttonName.ToString();
+                    button.Name = (j - 1) + "_" + (i - 1);
+                    button.Text = (j - 1) + "_" + (i - 1);
                     this.Controls.Add(button);
                     button.BringToFront();
                     countColom += 70;
-                    buttonName++;
+                    buttonName++;                    
                 }
                 countRow += 75;
 
@@ -102,24 +79,32 @@ namespace ConnectFourGame
 
         private void Button_Click(object sender, EventArgs e)
         {
+            string name = (sender as Button).Name;
+            string[] location = name.Split('_');
+            int x = Convert.ToInt32(location[0]);
+            int y = Convert.ToInt32(location[1]);
+
             if (player == "Red")
             {
-                if (bu)
-                {
-
-                }
-                else
+                
+                if ((x!=0 && x % 5 == 0) || arr[x+1,y]!=0)
                 {
                     (sender as Button).BackColor = Color.Red;
                     (sender as Button).Enabled = false;
                     player = "Blue";
-                } 
+                }
+                arr[x, y] = 1;
             }
             else if (player == "Blue")
             {
-                (sender as Button).BackColor = Color.GreenYellow;
-                (sender as Button).Enabled = false;
-                player = "Red";
+                if ((x != 0 && x % 5 == 0) || arr[x + 1, y] != 0)
+                {
+                    (sender as Button).BackColor = Color.GreenYellow;
+                    (sender as Button).Enabled = false;
+                    player = "Red";
+                }
+                arr[x, y] = 2;
+
             }
 
         }
