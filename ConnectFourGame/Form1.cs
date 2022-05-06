@@ -48,7 +48,7 @@ namespace ConnectFourGame
 
 
             int countRow = 0;
-            int buttonName = 1;
+
             for (int i = 1; i < 8; i++)
             {
                 int countColom = 0;
@@ -65,11 +65,10 @@ namespace ConnectFourGame
                     button.ForeColor = Color.Black;
                     button.Click += Button_Click;
                     button.Name = (j - 1) + "_" + (i - 1);
-                    button.Text = (j - 1) + "_" + (i - 1);
                     this.Controls.Add(button);
                     button.BringToFront();
                     countColom += 70;
-                    buttonName++;                    
+                
                 }
                 countRow += 75;
 
@@ -92,8 +91,9 @@ namespace ConnectFourGame
                     (sender as Button).BackColor = Color.Red;
                     (sender as Button).Enabled = false;
                     player = "Blue";
+                    arr[x, y] = 1;
                 }
-                arr[x, y] = 1;
+                
             }
             else if (player == "Blue")
             {
@@ -102,8 +102,9 @@ namespace ConnectFourGame
                     (sender as Button).BackColor = Color.GreenYellow;
                     (sender as Button).Enabled = false;
                     player = "Red";
+                    arr[x, y] = 2;
                 }
-                arr[x, y] = 2;
+             
 
             }
 
