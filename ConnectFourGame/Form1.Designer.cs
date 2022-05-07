@@ -36,6 +36,7 @@ namespace ConnectFourGame
             this.lblRed = new System.Windows.Forms.Label();
             this.lblMessage = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnRestart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@ namespace ConnectFourGame
             // 
             this.btnBlue.BackColor = System.Drawing.Color.GreenYellow;
             this.btnBlue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBlue.Location = new System.Drawing.Point(28, 218);
+            this.btnBlue.Location = new System.Drawing.Point(32, 310);
             this.btnBlue.Name = "btnBlue";
             this.btnBlue.Size = new System.Drawing.Size(127, 64);
             this.btnBlue.TabIndex = 0;
@@ -55,7 +56,7 @@ namespace ConnectFourGame
             this.btnRed.BackColor = System.Drawing.Color.Red;
             this.btnRed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRed.ForeColor = System.Drawing.Color.Black;
-            this.btnRed.Location = new System.Drawing.Point(28, 433);
+            this.btnRed.Location = new System.Drawing.Point(32, 480);
             this.btnRed.Name = "btnRed";
             this.btnRed.Size = new System.Drawing.Size(127, 64);
             this.btnRed.TabIndex = 1;
@@ -65,17 +66,19 @@ namespace ConnectFourGame
             // lblBlue
             // 
             this.lblBlue.AutoSize = true;
-            this.lblBlue.Location = new System.Drawing.Point(46, 168);
+            this.lblBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblBlue.Location = new System.Drawing.Point(50, 260);
             this.lblBlue.Name = "lblBlue";
-            this.lblBlue.Size = new System.Drawing.Size(0, 20);
+            this.lblBlue.Size = new System.Drawing.Size(0, 32);
             this.lblBlue.TabIndex = 2;
             // 
             // lblRed
             // 
             this.lblRed.AutoSize = true;
-            this.lblRed.Location = new System.Drawing.Point(46, 384);
+            this.lblRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblRed.Location = new System.Drawing.Point(50, 431);
             this.lblRed.Name = "lblRed";
-            this.lblRed.Size = new System.Drawing.Size(0, 20);
+            this.lblRed.Size = new System.Drawing.Size(0, 32);
             this.lblRed.TabIndex = 3;
             // 
             // lblMessage
@@ -83,7 +86,7 @@ namespace ConnectFourGame
             this.lblMessage.AutoSize = true;
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lblMessage.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.lblMessage.Location = new System.Drawing.Point(493, 9);
+            this.lblMessage.Location = new System.Drawing.Point(509, 25);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(430, 69);
             this.lblMessage.TabIndex = 4;
@@ -99,12 +102,23 @@ namespace ConnectFourGame
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // btnRestart
+            // 
+            this.btnRestart.Location = new System.Drawing.Point(32, 642);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(155, 74);
+            this.btnRestart.TabIndex = 6;
+            this.btnRestart.Text = "Restart";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1740, 947);
+            this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.lblRed);
             this.Controls.Add(this.lblBlue);
@@ -129,6 +143,7 @@ namespace ConnectFourGame
         private System.Windows.Forms.Label lblRed;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
 

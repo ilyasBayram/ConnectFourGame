@@ -59,14 +59,15 @@ namespace ConnectFourGame
                             if (arr[i, j] == 1)
                             {
                                 lblMessage.Visible = true;
-                                lblMessage.Text = "Red won";
+                                lblMessage.Text = "The winner is Red..";
                             }
                             else if(arr[i, j] == 2)
                             {
                                 lblMessage.Visible = true;
-                                lblMessage.Text = "Green won";
+                                lblMessage.Text = "The winner is Green..";
                             }
-                            
+                            count = 0;
+
                         }
                     }
                     else
@@ -96,12 +97,12 @@ namespace ConnectFourGame
                             if (arr[j, i] == 1)
                             {
                                 lblMessage.Visible = true;
-                                lblMessage.Text = "Red won";
+                                lblMessage.Text = "The winner is Red..";
                             }
                             else if (arr[j, i] == 2)
                             {
                                 lblMessage.Visible = true;
-                                lblMessage.Text = "Green won";
+                                lblMessage.Text = "The winner is Green";
                             }
 
                         }
@@ -117,7 +118,6 @@ namespace ConnectFourGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
 
             int countRow = 0;
 
@@ -137,7 +137,6 @@ namespace ConnectFourGame
                     button.ForeColor = Color.Black;
                     button.Click += Button_Click;
                     button.Name = (j - 1) + "_" + (i - 1);
-                    button.Text = (j - 1) + "_" + (i - 1);
                     this.Controls.Add(button);
                     button.BringToFront();
                     countColom += 70;
@@ -195,6 +194,11 @@ namespace ConnectFourGame
         {
             player = "Red";
             PlayerChoose();
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+
         }
     }
     public class CreateButton : Button
