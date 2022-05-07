@@ -19,6 +19,7 @@ namespace ConnectFourGame
         }
 
         string player ="";
+        int count = 0;
 
         int[,] arr = new int[6, 7];
 
@@ -39,20 +40,71 @@ namespace ConnectFourGame
             lblMessage.Visible = false;
         }
 
-        private bool ButtonControl()
+        private void ButtonHorizontalControl()
         {
-            int count = 0;
             int a;
             int b;
-            for (int i = 6; i > -1; i--)
+            for (int i = 5; i > -1; i--)
             {
-                for (int j = 5; j > -1; j--)
+                for (int j = 0; j < 6; j++)
                 {
                     a = arr[i, j];
-                    b = arr[i, j - 1];
-                    if (a==b)
+                    b = arr[i, j + 1];
+                    if ((a!=0 && b!=0)&& a==b)
                     {
                         count++;
+
+                        if (count==3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "Red won";
+                            }
+                            else if(arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "Green won";
+                            }
+                            
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                }
+            }   
+        }
+
+        private bool ButtonVerticalControl()
+        {
+            int a;
+            int b;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 5; j > 0; j--)
+                {
+                    a = arr[j, i];
+                    b = arr[j-1, i];
+                    if ((a != 0 && b != 0) && a == b)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[j, i] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "Red won";
+                            }
+                            else if (arr[j, i] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "Green won";
+                            }
+
+                        }
                     }
                     else
                     {
@@ -60,7 +112,6 @@ namespace ConnectFourGame
                     }
                 }
             }
-            
             return true;
         }
 
@@ -86,6 +137,7 @@ namespace ConnectFourGame
                     button.ForeColor = Color.Black;
                     button.Click += Button_Click;
                     button.Name = (j - 1) + "_" + (i - 1);
+                    button.Text = (j - 1) + "_" + (i - 1);
                     this.Controls.Add(button);
                     button.BringToFront();
                     countColom += 70;
@@ -114,7 +166,8 @@ namespace ConnectFourGame
                     player = "Blue";
                     arr[x, y] = 1;
                 }
-                ButtonControl();
+                ButtonHorizontalControl();
+                ButtonVerticalControl();
             }
             else if (player == "Blue")
             {
@@ -125,7 +178,8 @@ namespace ConnectFourGame
                     player = "Red";
                     arr[x, y] = 2;
                 }
-                ButtonControl();
+                ButtonHorizontalControl();
+                ButtonVerticalControl();
             }
 
         }
