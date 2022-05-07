@@ -39,10 +39,31 @@ namespace ConnectFourGame
             lblMessage.Visible = false;
         }
 
-        private void ButtonControl()
+        private bool ButtonControl()
         {
-          
+            int count = 0;
+            int a;
+            int b;
+            for (int i = 6; i > -1; i--)
+            {
+                for (int j = 5; j > -1; j--)
+                {
+                    a = arr[i, j];
+                    b = arr[i, j - 1];
+                    if (a==b)
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                }
+            }
+            
+            return true;
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -93,7 +114,7 @@ namespace ConnectFourGame
                     player = "Blue";
                     arr[x, y] = 1;
                 }
-                
+                ButtonControl();
             }
             else if (player == "Blue")
             {
@@ -104,8 +125,7 @@ namespace ConnectFourGame
                     player = "Red";
                     arr[x, y] = 2;
                 }
-             
-
+                ButtonControl();
             }
 
         }

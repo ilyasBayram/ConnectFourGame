@@ -81,10 +81,11 @@ namespace ConnectFourGame
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblMessage.Location = new System.Drawing.Point(23, 91);
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblMessage.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.lblMessage.Location = new System.Drawing.Point(493, 9);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(176, 29);
+            this.lblMessage.Size = new System.Drawing.Size(430, 69);
             this.lblMessage.TabIndex = 4;
             this.lblMessage.Text = "Choose a color";
             // 
@@ -103,7 +104,7 @@ namespace ConnectFourGame
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1324, 945);
+            this.ClientSize = new System.Drawing.Size(1740, 947);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.lblRed);
             this.Controls.Add(this.lblBlue);
