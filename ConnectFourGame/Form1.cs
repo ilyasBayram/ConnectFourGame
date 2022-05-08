@@ -23,6 +23,37 @@ namespace ConnectFourGame
 
         int[,] arr = new int[6, 7];
 
+        public void ButtonCreate()
+        {
+            int countRow = 0;
+
+            for (int i = 1; i < 8; i++)
+            {
+                int countColom = 0;
+
+                for (int j = 1; j < 7; j++)
+                {
+                    CreateButton button = new CreateButton();
+                    button.Size = new Size(60, 60);
+                    button.BackColor = Color.Azure;
+                    button.Location = new System.Drawing.Point(250 + countRow, 100 + countColom);
+                    button.FlatAppearance.BorderSize = 0;
+                    button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                    button.FlatAppearance.BorderColor = Color.Black;
+                    button.ForeColor = Color.Black;
+                    button.Click += Button_Click;
+                    button.Name = (j - 1) + "_" + (i - 1);
+                    button.Text = (j - 1) + "_" + (i - 1);
+                    this.Controls.Add(button);
+                    button.BringToFront();
+                    countColom += 70;
+
+                }
+                countRow += 75;
+
+            }
+        }
+
         private void PlayerChoose()
         {
             if (player=="Blue")
@@ -40,17 +71,55 @@ namespace ConnectFourGame
             lblMessage.Visible = false;
         }
 
-        private void ButtonHorizontalControl()
+        private void ButtonLongitudinalControl()
         {
             int a;
             int b;
+            int j = 0;
+
+            for (int i = 5; i > 0; i--)
+            {
+                a = arr[i, j];
+                b = arr[i-1, j + 1];
+                if ((a != 0 && b != 0) && a == b)
+                {
+                    count++;
+
+                    if (count == 3)
+                    {
+                        if (arr[i, j] == 1)
+                        {
+                            lblMessage.Visible = true;
+                            lblMessage.Text = "The winner is Red..";
+                        }
+                        else if (arr[i, j] == 2)
+                        {
+                            lblMessage.Visible = true;
+                            lblMessage.Text = "The winner is Green..";
+                        }
+                        count = 0;
+
+                    }
+                }
+                else
+                {
+                    count = 0;
+                }
+            j++;
+            }
+        }
+
+        private void ButtonHorizontalControl()
+        {
+            int firstButton;
+            int secondButton;
             for (int i = 5; i > -1; i--)
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    a = arr[i, j];
-                    b = arr[i, j + 1];
-                    if ((a!=0 && b!=0)&& a==b)
+                    firstButton = arr[i, j];
+                    secondButton = arr[i, j + 1];
+                    if ((firstButton!=0 && secondButton!=0)&& firstButton==secondButton)
                     {
                         count++;
 
@@ -78,17 +147,17 @@ namespace ConnectFourGame
             }   
         }
 
-        private bool ButtonVerticalControl()
+        private void ButtonVerticalControl()
         {
-            int a;
-            int b;
+            int firstButton;
+            int secondButton;
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 5; j > 0; j--)
                 {
-                    a = arr[j, i];
-                    b = arr[j-1, i];
-                    if ((a != 0 && b != 0) && a == b)
+                    firstButton = arr[j, i];
+                    secondButton = arr[j-1, i];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
                     {
                         count++;
 
@@ -113,39 +182,11 @@ namespace ConnectFourGame
                     }
                 }
             }
-            return true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            int countRow = 0;
-
-            for (int i = 1; i < 8; i++)
-            {
-                int countColom = 0;
-                
-                for (int j = 1; j < 7; j++)
-                {
-                    CreateButton button = new CreateButton();
-                    button.Size = new Size(60, 60);
-                    button.BackColor = Color.Azure;
-                    button.Location = new System.Drawing.Point(250+countRow, 100+countColom);
-                    button.FlatAppearance.BorderSize = 0;
-                    button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                    button.FlatAppearance.BorderColor = Color.Black;
-                    button.ForeColor = Color.Black;
-                    button.Click += Button_Click;
-                    button.Name = (j - 1) + "_" + (i - 1);
-                    this.Controls.Add(button);
-                    button.BringToFront();
-                    countColom += 70;
-                
-                }
-                countRow += 75;
-
-            }
-            
+            ButtonCreate();
         }
 
         private void Button_Click(object sender, EventArgs e)
@@ -162,13 +203,14 @@ namespace ConnectFourGame
                 {
                     (sender as Button).BackColor = Color.Red;
                     (sender as Button).Enabled = false;
-                    player = "Blue";
+                    player = "Green";
                     arr[x, y] = 1;
                 }
                 ButtonHorizontalControl();
                 ButtonVerticalControl();
+                ButtonLongitudinalControl();
             }
-            else if (player == "Blue")
+            else if (player == "Green")
             {
                 if ((x != 0 && x % 5 == 0) || arr[x + 1, y] != 0)
                 {
@@ -179,13 +221,14 @@ namespace ConnectFourGame
                 }
                 ButtonHorizontalControl();
                 ButtonVerticalControl();
+                ButtonLongitudinalControl();
             }
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            player = "Blue";
+            player = "Green";
             PlayerChoose();
 
         }
