@@ -43,7 +43,6 @@ namespace ConnectFourGame
                     button.ForeColor = Color.Black;
                     button.Click += Button_Click;
                     button.Name = (j - 1) + "_" + (i - 1);
-                    button.Text = (j - 1) + "_" + (i - 1);
                     this.Controls.Add(button);
                     button.BringToFront();
                     countColom += 70;
@@ -75,37 +74,218 @@ namespace ConnectFourGame
         {
             int a;
             int b;
+            int c;
             int j = 0;
 
-            for (int i = 5; i > 0; i--)
+            if (arr[3, 0] !=0)
             {
-                a = arr[i, j];
-                b = arr[i-1, j + 1];
-                if ((a != 0 && b != 0) && a == b)
+                for (int i = 3; i > 0; i--)
                 {
-                    count++;
-
-                    if (count == 3)
+                    a = arr[i, j];
+                    b = arr[i - 1, j + 1];
+                    if ((a != 0 && b != 0) && a == b)
                     {
-                        if (arr[i, j] == 1)
-                        {
-                            lblMessage.Visible = true;
-                            lblMessage.Text = "The winner is Red..";
-                        }
-                        else if (arr[i, j] == 2)
-                        {
-                            lblMessage.Visible = true;
-                            lblMessage.Text = "The winner is Green..";
-                        }
-                        count = 0;
+                        count++;
 
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+
+                        }
                     }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
                 }
-                else
+                j = 0;
+            }
+            if (arr[3, 1] != 0)
+            {
+                for (int i = 4; i > 1; i--)
                 {
-                    count = 0;
+                    a = arr[i, j];
+                    b = arr[i - 1, j + 1];
+
+                    if ((a != 0 && b != 0) && a == b)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
                 }
-            j++;
+
+                j = 0;
+            }
+            if (arr[3, 2] != 0)
+            {
+                for (int i = 5; i > 0; i--)
+                {
+                    a = arr[i, j];
+                    b = arr[i - 1, j + 1];
+                    if ((a != 0 && b != 0) && a == b)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                j = 0;
+            }
+            if (arr[3, 3] != 0)
+            {
+                j = 1;
+                for (int i = 5; i > 0; i--)
+                {
+                    a = arr[i, j];
+                    b = arr[i - 1, j + 1];
+                    if ((a != 0 && b != 0) && a == b)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                j = 0;
+            }
+            if (arr[3, 4] != 0)
+            {
+                j = 2;
+                for (int i = 5; i > 1; i--)
+                {
+                   
+                    a = arr[i, j];
+                    b = arr[i - 1, j + 1];
+                    if ((a != 0 && b != 0) && a == b)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                j = 0;
+            }
+            if (arr[3, 5] != 0)
+            {
+                j = 3;
+                for (int i = 5; i > 2; i--)
+                {
+                    a = arr[i, j];
+                    b = arr[i - 1, j + 1];
+                    if ((a != 0 && b != 0) && a == b)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                j = 0;
             }
         }
 
