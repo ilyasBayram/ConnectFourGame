@@ -43,6 +43,7 @@ namespace ConnectFourGame
                     button.ForeColor = Color.Black;
                     button.Click += Button_Click;
                     button.Name = (j - 1) + "_" + (i - 1);
+                    button.Name = (j - 1) + "_" + (i - 1);
                     this.Controls.Add(button);
                     button.BringToFront();
                     countColom += 70;
@@ -72,18 +73,17 @@ namespace ConnectFourGame
 
         private void ButtonLongitudinalControl()
         {
-            int a;
-            int b;
-            int c;
+            int firstButton;
+            int secondButton;
             int j = 0;
 
-            if (arr[3, 0] !=0)
+            if (arr[3, 0] != 0)
             {
                 for (int i = 3; i > 0; i--)
                 {
-                    a = arr[i, j];
-                    b = arr[i - 1, j + 1];
-                    if ((a != 0 && b != 0) && a == b)
+                    firstButton = arr[i, j];
+                    secondButton = arr[i - 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
                     {
                         count++;
 
@@ -100,7 +100,6 @@ namespace ConnectFourGame
                                 lblMessage.Text = "The winner is Green..";
                             }
                             count = 0;
-
                         }
                     }
                     else
@@ -110,15 +109,16 @@ namespace ConnectFourGame
                     j++;
                 }
                 j = 0;
+                count = 0;
             }
             if (arr[3, 1] != 0)
             {
-                for (int i = 4; i > 1; i--)
+                for (int i = 4; i > 0; i--)
                 {
-                    a = arr[i, j];
-                    b = arr[i - 1, j + 1];
+                    firstButton = arr[i, j];
+                    secondButton = arr[i - 1, j + 1];
 
-                    if ((a != 0 && b != 0) && a == b)
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
                     {
                         count++;
 
@@ -146,14 +146,48 @@ namespace ConnectFourGame
                 }
 
                 j = 0;
+                count = 0;
+
+                for (int i = 2; i < 5; i++)
+                {
+                    firstButton = arr[i, j];
+                    secondButton = arr[i+1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                j = 0;
+                count = 0;
             }
             if (arr[3, 2] != 0)
             {
-                for (int i = 5; i > 0; i--)
+                for (int i = 5; i > 1 ; i--)
                 {
-                    a = arr[i, j];
-                    b = arr[i - 1, j + 1];
-                    if ((a != 0 && b != 0) && a == b)
+                    firstButton = arr[i, j];
+                    secondButton = arr[i - 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
                     {
                         count++;
 
@@ -180,15 +214,47 @@ namespace ConnectFourGame
                     j++;
                 }
                 j = 0;
+                count = 0;
+                for (int i = 1; i < 5; i++)
+                {
+                    firstButton = arr[i, j];
+                    secondButton = arr[i + 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                count = 0;
             }
             if (arr[3, 3] != 0)
             {
                 j = 1;
                 for (int i = 5; i > 0; i--)
                 {
-                    a = arr[i, j];
-                    b = arr[i - 1, j + 1];
-                    if ((a != 0 && b != 0) && a == b)
+                    firstButton = arr[i, j];
+                    secondButton = arr[i - 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
                     {
                         count++;
 
@@ -215,6 +281,37 @@ namespace ConnectFourGame
                     j++;
                 }
                 j = 0;
+                count = 0;
+                for (int i = 0; i < 5; i++)
+                {
+                    firstButton = arr[i, j];
+                    secondButton = arr[i + 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                count = 0;
             }
             if (arr[3, 4] != 0)
             {
@@ -222,9 +319,9 @@ namespace ConnectFourGame
                 for (int i = 5; i > 1; i--)
                 {
                    
-                    a = arr[i, j];
-                    b = arr[i - 1, j + 1];
-                    if ((a != 0 && b != 0) && a == b)
+                    firstButton = arr[i, j];
+                    secondButton = arr[i - 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
                     {
                         count++;
 
@@ -251,15 +348,46 @@ namespace ConnectFourGame
                     j++;
                 }
                 j = 0;
+                count = 0;
+                for (int i = 0; i < 5; i++)
+                {
+                    firstButton = arr[i, j];
+                    secondButton = arr[i + 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                count = 0;
             }
             if (arr[3, 5] != 0)
             {
                 j = 3;
                 for (int i = 5; i > 2; i--)
                 {
-                    a = arr[i, j];
-                    b = arr[i - 1, j + 1];
-                    if ((a != 0 && b != 0) && a == b)
+                    firstButton = arr[i, j];
+                    secondButton = arr[i - 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
                     {
                         count++;
 
@@ -285,7 +413,72 @@ namespace ConnectFourGame
                     }
                     j++;
                 }
-                j = 0;
+                j = 2;
+                count = 0;
+                for (int i = 0; i < 4; i++)
+                {
+                    firstButton = arr[i, j];
+                    secondButton = arr[i + 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                count = 0;
+            }
+            if (arr[3, 6] != 0)
+            {
+                j = 3;
+                for (int i = 0; i < 3; i++)
+                {
+                    firstButton = arr[i, j];
+                    secondButton = arr[i + 1, j + 1];
+                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
+                    {
+                        count++;
+
+                        if (count == 3)
+                        {
+                            if (arr[i, j] == 1)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Red..";
+                            }
+                            else if (arr[i, j] == 2)
+                            {
+                                lblMessage.Visible = true;
+                                lblMessage.Text = "The winner is Green..";
+                            }
+                            count = 0;
+                        }
+                    }
+                    else
+                    {
+                        count = 0;
+                    }
+                    j++;
+                }
+                count = 0;
             }
         }
 
@@ -324,7 +517,8 @@ namespace ConnectFourGame
                         count = 0;
                     }
                 }
-            }   
+            }
+            count = 0;
         }
 
         private void ButtonVerticalControl()
@@ -362,6 +556,7 @@ namespace ConnectFourGame
                     }
                 }
             }
+            count = 0;
         }
 
         private void Form1_Load(object sender, EventArgs e)
