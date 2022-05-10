@@ -52,6 +52,17 @@ namespace ConnectFourGame
             }
         }
 
+        public void ButtonEnabledFlase()
+        {
+            foreach (Control item in this.Controls)
+            {
+                if (item is Button)
+                {
+                    item.Enabled = false;
+                }
+            }
+        }
+
         private void PlayerChoose()
         {
             if (player=="Blue")
@@ -81,12 +92,13 @@ namespace ConnectFourGame
                     {
                         lblMessage.Visible = true;
                         lblMessage.Text = "The winner is Red..";
-
+                        ButtonEnabledFlase();
                     }
                     else if (arr[i, j] == 2)
                     {
                         lblMessage.Visible = true;
                         lblMessage.Text = "The winner is Green..";
+                        ButtonEnabledFlase();
                     }
                     count = 0;
                 }
