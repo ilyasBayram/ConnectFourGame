@@ -364,9 +364,14 @@ namespace ConnectFourGame
                         lblMessage.Visible = true;
                         lblMessage.Text = "Choose a color";
 
-
-                    }
-                    
+                        for (int i = 0; i < 6; i++)
+                        {
+                            for (int j = 0; j < 7; j++)
+                            {
+                                arr[i, j] = 0;
+                            }
+                        }
+                    }  
                 }
             }
         }
