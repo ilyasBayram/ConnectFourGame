@@ -59,16 +59,17 @@ namespace ConnectFourGame
         {
             foreach (Control item in this.Controls)
             {
-                if (item is Button)
+                if (item is Button && item.Name!= "btnBlue" && item.Name != "btnRed" && item.Name != "btnRestart")
                 {
                     item.Enabled = false;
                 }
             }
         }
+
        
         private void PlayerChoose()
         {
-            if (player=="Blue")
+            if (player=="Green")
             {
                 lblBlue.Text = "Player1";
                 lblRed.Text = "Player2";
@@ -350,7 +351,24 @@ namespace ConnectFourGame
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
+            foreach (Control item in this.Controls)
+            {
+                if (item is Button)
+                {
+                    item.Enabled = true;
+                    if (item.Name != "btnBlue" && item.Name != "btnRed" && item.Name != "btnRestart")
+                    {
+                        item.BackColor = Color.Azure;
+                        lblBlue.Text = "";
+                        lblRed.Text="";
+                        lblMessage.Visible = true;
+                        lblMessage.Text = "Choose a color";
 
+
+                    }
+                    
+                }
+            }
         }
     }
     public class CreateButton : Button
