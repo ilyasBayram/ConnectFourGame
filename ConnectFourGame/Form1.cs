@@ -21,8 +21,10 @@ namespace ConnectFourGame
         string player ="";
         int count = 0;
 
+        // a multidimansional array is created.
         int[,] arr = new int[6, 7];
 
+       //This mothod creates 42 dynamic button with for loops.
         public void ButtonCreate()
         {
             int countRow = 0;
@@ -52,6 +54,7 @@ namespace ConnectFourGame
             }
         }
 
+        //At the end of the game this method stops all buttons fuction and Buttons con not be clicked any more.
         public void ButtonEnabledFlase()
         {
             foreach (Control item in this.Controls)
@@ -62,7 +65,7 @@ namespace ConnectFourGame
                 }
             }
         }
-
+       
         private void PlayerChoose()
         {
             if (player=="Blue")
@@ -80,6 +83,8 @@ namespace ConnectFourGame
             lblMessage.Visible = false;
         }
 
+        //This method controls if four button with same color is in specific order. 
+        //If count variable reach to 3 the winner is written on the label and buttons con not be clicked any more.
         private void PlayerScore(int firstButton, int secondButton, int j, int i)
         {
             if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
@@ -109,6 +114,8 @@ namespace ConnectFourGame
             }
         }
 
+        // this mothod check longitudinal position of buttons and if four buttons that have same color 
+        // is order the game ends.
         private void ButtonLongitudinalControl()
         {
             int firstButton;
@@ -186,29 +193,7 @@ namespace ConnectFourGame
                 {
                     firstButton = arr[i, j];
                     secondButton = arr[i + 1, j + 1];
-                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
-                    {
-                        count++;
-
-                        if (count == 3)
-                        {
-                            if (arr[i, j] == 1)
-                            {
-                                lblMessage.Visible = true;
-                                lblMessage.Text = "The winner is Red..";
-                            }
-                            else if (arr[i, j] == 2)
-                            {
-                                lblMessage.Visible = true;
-                                lblMessage.Text = "The winner is Green..";
-                            }
-                            count = 0;
-                        }
-                    }
-                    else
-                    {
-                        count = 0;
-                    }
+                    PlayerScore(firstButton, secondButton, j, i);
                     j++;
                 }
                 count = 0;
@@ -230,29 +215,7 @@ namespace ConnectFourGame
                 {
                     firstButton = arr[i, j];
                     secondButton = arr[i + 1, j + 1];
-                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
-                    {
-                        count++;
-
-                        if (count == 3)
-                        {
-                            if (arr[i, j] == 1)
-                            {
-                                lblMessage.Visible = true;
-                                lblMessage.Text = "The winner is Red..";
-                            }
-                            else if (arr[i, j] == 2)
-                            {
-                                lblMessage.Visible = true;
-                                lblMessage.Text = "The winner is Green..";
-                            }
-                            count = 0;
-                        }
-                    }
-                    else
-                    {
-                        count = 0;
-                    }
+                    PlayerScore(firstButton, secondButton, j, i);
                     j++;
                 }
                 count = 0;
@@ -273,29 +236,7 @@ namespace ConnectFourGame
                 {
                     firstButton = arr[i, j];
                     secondButton = arr[i + 1, j + 1];
-                    if ((firstButton != 0 && secondButton != 0) && firstButton == secondButton)
-                    {
-                        count++;
-
-                        if (count == 3)
-                        {
-                            if (arr[i, j] == 1)
-                            {
-                                lblMessage.Visible = true;
-                                lblMessage.Text = "The winner is Red..";
-                            }
-                            else if (arr[i, j] == 2)
-                            {
-                                lblMessage.Visible = true;
-                                lblMessage.Text = "The winner is Green..";
-                            }
-                            count = 0;
-                        }
-                    }
-                    else
-                    {
-                        count = 0;
-                    }
+                    PlayerScore(firstButton, secondButton, j, i);
                     j++;
                 }
                 count = 0;
@@ -314,6 +255,7 @@ namespace ConnectFourGame
             }
         }
 
+        // this mothod check horizontal position of buttons.
         private void ButtonHorizontalControl()
         {
             int firstButton;
@@ -331,6 +273,7 @@ namespace ConnectFourGame
             count = 0;
         }
 
+        // this mothod check horizontal position of buttons.
         private void ButtonVerticalControl()
         {
             int firstButton;
@@ -353,6 +296,8 @@ namespace ConnectFourGame
             ButtonCreate();
         }
 
+        //ıt understand which button is clicked.
+        // if it is red it gives 1 as value.
         private void Button_Click(object sender, EventArgs e)
         {
             string name = (sender as Button).Name;
