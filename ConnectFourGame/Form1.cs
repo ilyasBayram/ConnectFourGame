@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Media;
 
 namespace ConnectFourGame
 {
@@ -22,6 +23,8 @@ namespace ConnectFourGame
         string player ="";
         int count = 0;
         #endregion
+
+        SoundPlayer BtnSound = new SoundPlayer();
 
         // a multidimansional array is created.
         int[,] arr = new int[6, 7];
@@ -144,6 +147,12 @@ namespace ConnectFourGame
                 lblMessage.Text = "No winner. It is Draw ";
                 ButtonEnabledFalse();
             }
+        }
+
+        private void ButtonSound()
+        {
+            BtnSound.SoundLocation = @"C:\Users\ilyas.bayram\source\repos\ConnectFourGame\ConnectFourGame\mixkit-select-click-1109.wav";
+            BtnSound.Play();
         }
 
         // this mothod check longitudinal position of buttons and if four buttons that have same color 
@@ -348,6 +357,7 @@ namespace ConnectFourGame
                     player = "Green";
                     arr[x, y] = 1;
                 }
+                ButtonSound();
                 ButtonHorizontalControl();
                 ButtonVerticalControl();
                 ButtonLongitudinalControl();
@@ -362,6 +372,7 @@ namespace ConnectFourGame
                     player = "Red";
                     arr[x, y] = 2;
                 }
+                ButtonSound();
                 ButtonHorizontalControl();
                 ButtonVerticalControl();
                 ButtonLongitudinalControl();
