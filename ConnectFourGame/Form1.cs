@@ -63,7 +63,7 @@ namespace ConnectFourGame
         }
 
         //At the end of the game this method stops all buttons fuction and Buttons con not be clicked any more.
-        public void ButtonEnabledFlase()
+        public void ButtonEnabledFalse()
         {
             foreach (Control item in this.Controls)
             {
@@ -107,14 +107,14 @@ namespace ConnectFourGame
                         lblMessage.Visible = true;
                         lblMessage.ForeColor = Color.Red;
                         lblMessage.Text = "The winner is Red..";
-                        ButtonEnabledFlase();
+                        ButtonEnabledFalse();
                     }
                     else if (arr[i, j] == 2)
                     {
                         lblMessage.Visible = true;
                         lblMessage.ForeColor = Color.GreenYellow;
                         lblMessage.Text = "The winner is Green..";
-                        ButtonEnabledFlase();
+                        ButtonEnabledFalse();
                     }
                     count = 0;
                 }
@@ -122,6 +122,27 @@ namespace ConnectFourGame
             else
             {
                 count = 0;
+            }
+        }
+
+        private void Draw()
+        {
+            int firstButton;
+            int counting = 0;
+            int j = 0;
+            for (int i = 0; i < 7; i++)
+            {
+                firstButton = arr[j, i];
+                if (firstButton == 0)
+                {
+                    counting++;
+                }
+            }
+            if (counting == 0)
+            {
+                lblMessage.Visible = true;
+                lblMessage.Text = "No winner. It is Draw ";
+                ButtonEnabledFalse();
             }
         }
 
@@ -303,6 +324,8 @@ namespace ConnectFourGame
             }
             count = 0;
         }
+
+       
         #endregion
 
         #region buttons
@@ -328,6 +351,7 @@ namespace ConnectFourGame
                 ButtonHorizontalControl();
                 ButtonVerticalControl();
                 ButtonLongitudinalControl();
+                Draw();
             }
             else if (player == "Green")
             {
@@ -341,6 +365,7 @@ namespace ConnectFourGame
                 ButtonHorizontalControl();
                 ButtonVerticalControl();
                 ButtonLongitudinalControl();
+                Draw();
             }
 
         }
