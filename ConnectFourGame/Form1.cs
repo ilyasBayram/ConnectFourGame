@@ -18,13 +18,21 @@ namespace ConnectFourGame
             InitializeComponent();
         }
 
+        #region variables
         string player ="";
         int count = 0;
+        #endregion
 
         // a multidimansional array is created.
         int[,] arr = new int[6, 7];
 
-       //This mothod creates 42 dynamic button with for loops.
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ButtonCreate();
+        }
+
+        #region methods
+        //This mothod creates 42 dynamic button with for loops.
         public void ButtonCreate()
         {
             int countRow = 0;
@@ -66,7 +74,7 @@ namespace ConnectFourGame
             }
         }
 
-       
+        // this method determine what players color will be.
         private void PlayerChoose()
         {
             if (player=="Green")
@@ -84,7 +92,7 @@ namespace ConnectFourGame
             lblMessage.Visible = false;
         }
 
-        //This method controls if four button with same color is in specific order. 
+        //This method controls if four button with same color is in  order. 
         //If count variable reach to 3 the winner is written on the label and buttons con not be clicked any more.
         private void PlayerScore(int firstButton, int secondButton, int j, int i)
         {
@@ -97,12 +105,14 @@ namespace ConnectFourGame
                     if (arr[i, j] == 1)
                     {
                         lblMessage.Visible = true;
+                        lblMessage.ForeColor = Color.Red;
                         lblMessage.Text = "The winner is Red..";
                         ButtonEnabledFlase();
                     }
                     else if (arr[i, j] == 2)
                     {
                         lblMessage.Visible = true;
+                        lblMessage.ForeColor = Color.GreenYellow;
                         lblMessage.Text = "The winner is Green..";
                         ButtonEnabledFlase();
                     }
@@ -116,7 +126,7 @@ namespace ConnectFourGame
         }
 
         // this mothod check longitudinal position of buttons and if four buttons that have same color 
-        // is order the game ends.
+        // is in order the game ends.
         private void ButtonLongitudinalControl()
         {
             int firstButton;
@@ -274,29 +284,28 @@ namespace ConnectFourGame
             count = 0;
         }
 
-        // this mothod check horizontal position of buttons.
+        // this mothod check vertical position of buttons.
         private void ButtonVerticalControl()
         {
             int firstButton;
             int secondButton;
-            for (int i = 0; i < 7; i++)
+            int j = 0;
+            for (int k = 0; k < 7; k++)
             {
-                for (int j = 5; j > 0; j--)
+                for (int i = 5; i > 0; i--)
                 {
-                    firstButton = arr[j, i];
-                    secondButton = arr[j-1, i];
+                    firstButton = arr[i, j];
+                    secondButton = arr[i - 1, j];
                     PlayerScore(firstButton, secondButton, j, i);
                 }
+                j++;
                 count = 0;
             }
             count = 0;
         }
+        #endregion
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            ButtonCreate();
-        }
-
+        #region buttons
         //ıt understand which button is clicked.
         // if it is red it gives 1 as value.
         private void Button_Click(object sender, EventArgs e)
@@ -349,19 +358,27 @@ namespace ConnectFourGame
             PlayerChoose();
         }
 
+        // It restart the game, values inside the array becomes 0. Values belongs the items go back to their first value.
         private void btnRestart_Click(object sender, EventArgs e)
         {
+            //finding all items on form. 
+
             foreach (Control item in this.Controls)
             {
+                //If item is button it makes them clickable and according to their name 
+                //it reset their values to their first value.
                 if (item is Button)
                 {
                     item.Enabled = true;
+
                     if (item.Name != "btnBlue" && item.Name != "btnRed" && item.Name != "btnRestart")
                     {
                         item.BackColor = Color.Azure;
                         lblBlue.Text = "";
                         lblRed.Text="";
+                        player = "";
                         lblMessage.Visible = true;
+                        lblMessage.ForeColor = Color.DeepPink;
                         lblMessage.Text = "Choose a color";
 
                         for (int i = 0; i < 6; i++)
@@ -375,7 +392,10 @@ namespace ConnectFourGame
                 }
             }
         }
+        #endregion
     }
+
+        #region class
     public class CreateButton : Button
     {
         protected override void OnResize (EventArgs e)
@@ -386,4 +406,5 @@ namespace ConnectFourGame
             this.Region = new Region(grafic);
             }
     }
+    #endregion
 }

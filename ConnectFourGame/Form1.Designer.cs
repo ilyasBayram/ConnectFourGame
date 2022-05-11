@@ -29,7 +29,6 @@ namespace ConnectFourGame
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnBlue = new System.Windows.Forms.Button();
             this.btnRed = new System.Windows.Forms.Button();
@@ -37,7 +36,6 @@ namespace ConnectFourGame
             this.lblRed = new System.Windows.Forms.Label();
             this.lblMessage = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnRestart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -119,8 +117,9 @@ namespace ConnectFourGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1740, 947);
+            this.ClientSize = new System.Drawing.Size(1303, 864);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.lblRed);
@@ -128,8 +127,11 @@ namespace ConnectFourGame
             this.Controls.Add(this.btnRed);
             this.Controls.Add(this.btnBlue);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1325, 920);
+            this.MinimumSize = new System.Drawing.Size(1325, 920);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -146,7 +148,6 @@ namespace ConnectFourGame
         private System.Windows.Forms.Label lblRed;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnRestart;
     }
 }
