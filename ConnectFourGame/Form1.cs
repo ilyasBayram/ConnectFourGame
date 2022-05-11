@@ -175,7 +175,7 @@ namespace ConnectFourGame
                 j = 0;
                 count = 0;
             }
-            if (arr[3, 1] != 0)
+            if (arr[3, 1] == 0) return;
             {
                 for (int i = 4; i > 0; i--)
                 {
@@ -342,6 +342,7 @@ namespace ConnectFourGame
         // if it is red it gives 1 as value.
         private void Button_Click(object sender, EventArgs e)
         {
+            
             string name = (sender as Button).Name;
             string[] location = name.Split('_');
             int x = Convert.ToInt32(location[0]);
@@ -349,7 +350,7 @@ namespace ConnectFourGame
 
             if (player == "Red")
             {
-                
+                ButtonSound();
                 if ((x!=0 && x % 5 == 0) || arr[x+1,y]!=0)
                 {
                     (sender as Button).BackColor = Color.Red;
@@ -357,7 +358,7 @@ namespace ConnectFourGame
                     player = "Green";
                     arr[x, y] = 1;
                 }
-                ButtonSound();
+                
                 ButtonHorizontalControl();
                 ButtonVerticalControl();
                 ButtonLongitudinalControl();
@@ -365,6 +366,7 @@ namespace ConnectFourGame
             }
             else if (player == "Green")
             {
+                ButtonSound();
                 if ((x != 0 && x % 5 == 0) || arr[x + 1, y] != 0)
                 {
                     (sender as Button).BackColor = Color.GreenYellow;
@@ -372,7 +374,6 @@ namespace ConnectFourGame
                     player = "Red";
                     arr[x, y] = 2;
                 }
-                ButtonSound();
                 ButtonHorizontalControl();
                 ButtonVerticalControl();
                 ButtonLongitudinalControl();
