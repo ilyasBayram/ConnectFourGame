@@ -175,7 +175,7 @@ namespace ConnectFourGame
                 j = 0;
                 count = 0;
             }
-            if (arr[3, 1] == 0) return;
+            if (arr[3, 1] != 0)
             {
                 for (int i = 4; i > 0; i--)
                 {
@@ -250,7 +250,7 @@ namespace ConnectFourGame
                     PlayerScore(firstButton, secondButton, j, i);
                     j++;
                 }
-                j = 0;
+                j = 1;
                 count = 0;
                 for (int i = 0; i < 5; i++)
                 {
@@ -435,6 +435,7 @@ namespace ConnectFourGame
         #region class
     public class CreateButton : Button
     {
+        //It makes round shape button.
         protected override void OnResize (EventArgs e)
             {
             base.OnResize(e);
