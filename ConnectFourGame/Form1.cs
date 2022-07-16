@@ -151,7 +151,7 @@ namespace ConnectFourGame
 
         private void ButtonSound()
         {
-            BtnSound.SoundLocation = @"C:\Users\ilyas.bayram\source\repos\ConnectFourGame\ConnectFourGame\mixkit-select-click-1109.wav";
+            BtnSound.SoundLocation = @"C:\Users\ilyas.bayram\source\repos\Projeler\ConnectFourGame\mixkit-select-click-1109.wav";
             BtnSound.Play();
         }
 
@@ -351,6 +351,7 @@ namespace ConnectFourGame
             if (player == "Red")
             {
                 ButtonSound();
+
                 if ((x!=0 && x % 5 == 0) || arr[x+1,y]!=0)
                 {
                     (sender as Button).BackColor = Color.Red;
@@ -360,13 +361,17 @@ namespace ConnectFourGame
                 }
                 
                 ButtonHorizontalControl();
+
                 ButtonVerticalControl();
+
                 ButtonLongitudinalControl();
+
                 Draw();
             }
             else if (player == "Green")
             {
                 ButtonSound();
+
                 if ((x != 0 && x % 5 == 0) || arr[x + 1, y] != 0)
                 {
                     (sender as Button).BackColor = Color.GreenYellow;
@@ -375,8 +380,11 @@ namespace ConnectFourGame
                     arr[x, y] = 2;
                 }
                 ButtonHorizontalControl();
+
                 ButtonVerticalControl();
+
                 ButtonLongitudinalControl();
+
                 Draw();
             }
 
@@ -385,6 +393,7 @@ namespace ConnectFourGame
         private void button1_Click(object sender, EventArgs e)
         {
             player = "Green";
+
             PlayerChoose();
 
         }
@@ -392,6 +401,7 @@ namespace ConnectFourGame
         private void button2_Click(object sender, EventArgs e)
         {
             player = "Red";
+
             PlayerChoose();
         }
 
